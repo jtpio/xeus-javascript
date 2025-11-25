@@ -47,6 +47,8 @@ struct BindingType<nl::json> {
     }
 };
 
+#ifdef XEUS_JAVASCRIPT_EMSCRIPTEN_OLD
+
 
 template <typename T>
 using is_decayed_json = std::is_same<std::decay_t<T>, nl::json>;
@@ -61,46 +63,7 @@ struct TypeID<T, enable_if_decayed_json<T> > {
     }
 };
 
-
-
-
-
-
-// template <>
-// struct TypeID<nl::json> {
-//     static constexpr TYPEID get() {
-//         return LightTypeID<val>::get();
-//     }
-// };
-
-// template <>
-// struct TypeID<const nl::json> {
-//     static constexpr TYPEID get() {
-//         return LightTypeID<val>::get();
-//     }
-// };
-
-// template <>
-// struct TypeID< nl::json  && > {
-//     static constexpr TYPEID get() {
-//         return LightTypeID<val>::get();
-//     }
-// };
-
-
-// template <>
-// struct TypeID<nl::json&> {
-//     static constexpr TYPEID get() {
-//         return LightTypeID<val>::get();
-//     }
-// };
-
-// template <>
-// struct TypeID<const nl::json&> {
-//     static constexpr TYPEID get() {
-//         return LightTypeID<val>::get();
-//     }
-// };
+#endif
 
 }  // namespace internal
 }  // namespace emscripten
